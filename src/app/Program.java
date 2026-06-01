@@ -11,7 +11,7 @@ public class Program {
     public static void main(String[] args) {
         Harcos harcos = new Harcos();
         Varazslo varazslo = new Varazslo();
-
+        
         System.out.println("Start");
         System.out.println("---------------");
 
