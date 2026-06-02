@@ -56,7 +56,7 @@ public class Jatekos {
     public void extraElet() {
         int esely = rnd.nextInt(0, 100);
 
-        if (this.eletero < 9) {
+        if (this.eletero < 9 && this.eletero > 0) {
             if (esely < 20) {
                 this.eletero++;
                 System.out.println(karakter + " kapott +1 extra életet!");
