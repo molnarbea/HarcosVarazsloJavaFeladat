@@ -53,15 +53,18 @@ public class Jatekos {
         this.eletero = ujEletero;
     }
 
-    public void extraElet() {
+    public boolean extraElet() {
+        boolean extraElet=false;
         int esely = rnd.nextInt(0, 100);
 
         if (this.eletero < 9 && this.eletero > 0) {
             if (esely < 20) {
                 this.eletero++;
-                System.out.println(karakter + " kapott +1 extra életet!");
+                extraElet = true;
             }
         }
+        
+        return extraElet;
     }
 
     public void ujLepes() {

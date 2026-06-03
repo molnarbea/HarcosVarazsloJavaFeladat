@@ -59,8 +59,12 @@ public class Program {
                 }
             }
 
-            varazslo.extraElet();
-            harcos.extraElet();
+            if(harcos.extraElet()){
+                System.out.println("A harcos 1 extra életet kapott!");
+            }
+            if(varazslo.extraElet()){
+                System.out.println("A varázsló 1 extra életet kapott!");
+            }
 
             harcos.ujLepes();
             varazslo.ujLepes();
