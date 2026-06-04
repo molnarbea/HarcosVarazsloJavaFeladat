@@ -5,7 +5,7 @@ public class Varazslo extends Jatekos {
     public Varazslo() {
         super(Karakter.VARAZSLO, 3);
     }
-
+    
     public void gyogyit() {
         if (getEletero() < 9) {
             setEletero(getEletero() + 1);
