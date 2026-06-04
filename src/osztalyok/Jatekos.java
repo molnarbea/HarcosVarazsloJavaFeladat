@@ -7,22 +7,25 @@ public class Jatekos {
 
     private final Random rnd = new Random();
 
-    private String karakter;
+    private Karakter karakter;
     private int eletero = 9;
     private int utoero;
     private int lepes;
 
-    public Jatekos() {
-        this("nem tudjuk", 0);
-    }
-
-    public Jatekos(String karakter, int utoero) {
+    public Jatekos(Karakter karakter, int utoero) {
+        if (karakter == null) {
+            throw new IllegalArgumentException("A karakter nem lehet null!");
+        }
+        if (utoero <= 0) {
+            throw new IllegalArgumentException("Az ütőerő legyen nagyobb mint 0!");
+        }
+        
         this.karakter = karakter;
         this.utoero = utoero;
         this.lepes = rnd.nextInt(0, 3);
     }
 
-    public String getKarakter() {
+    public Karakter getKarakter() {
         return karakter;
     }
 
@@ -43,6 +46,10 @@ public class Jatekos {
     }
 
     public void harcol(Jatekos ellenfel) {
+        if (ellenfel == null) {
+            throw new IllegalArgumentException("Az ellenfél nem lehet null!");
+        }
+
         int sebzes = ellenfel.getUtoero();
         int ujEletero = this.eletero - sebzes;
 
@@ -73,14 +80,15 @@ public class Jatekos {
 
     @Override
     public String toString() {
-        return "Jatekos{" + "karakter=" + karakter + ", eletero=" + eletero + ", utoero=" + utoero + '}';
+        return "Jatekos{karakter=" + karakter + ", eletero=" + eletero + ", utoero=" + utoero + ", lepes=" + lepes + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.karakter);
-        hash = 37 * hash + this.utoero;
+        hash = 43 * hash + Objects.hashCode(this.karakter);
+        hash = 43 * hash + this.eletero;
+        hash = 43 * hash + this.utoero;
         return hash;
     }
 
@@ -96,10 +104,12 @@ public class Jatekos {
             return false;
         }
         final Jatekos other = (Jatekos) obj;
+        if (this.eletero != other.eletero) {
+            return false;
+        }
         if (this.utoero != other.utoero) {
             return false;
         }
-        return Objects.equals(this.karakter, other.karakter);
+        return this.karakter == other.karakter;
     }
-
 }
