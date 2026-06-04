@@ -3,7 +3,7 @@ package osztalyok;
 public class Varazslo extends Jatekos {
 
     public Varazslo() {
-        super("varázsló", 3);
+        super(Karakter.VARAZSLO, 0);
     }
 
     public void gyogyit() {

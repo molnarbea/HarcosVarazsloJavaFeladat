@@ -3,7 +3,7 @@ package osztalyok;
 public class Harcos extends Jatekos{
 
     public Harcos() {
-        super("harcos",4);
+        super(Karakter.HARCOS,4);
     }
 
     @Override

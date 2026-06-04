@@ -19,30 +19,31 @@ public class Program {
         String tipp = sc.nextLine().trim().toLowerCase();
 
         while (!tipp.equals("varazslo") && !tipp.equals("harcos") && !tipp.equals("dontetlen")) {
-            System.out.println("Helytelen tipp, próbáld újra!(varazslo/harcos/dontetlen)");
+            System.out.println("Helytelen tipp, prÃ³bÃ¡ld Ãºjra!(varazslo/harcos/dontetlen)");
             System.out.print("Tipp: ");
             tipp = sc.nextLine().trim().toLowerCase();
         }
 
-        System.out.println("\nStart");
+        System.out.println("\nğŸ® Start ğŸ®");
 
         while (harcos.getEletero() > 0 && varazslo.getEletero() > 0) {
             korokSzama++;
             System.out.println("---------------");
-            System.out.println(korokSzama + " KÖR");
-            System.out.println("Harcos életerõ: " + harcos.getEletero());
-            System.out.println("Varázsló életerõ: " + varazslo.getEletero());
+            System.out.println("\n---------------");
+            System.out.println(korokSzama + ". KÃ–R");
+            System.out.println("â¤ï¸ Harcos Ã©leterÅ‘: " + harcos.getEletero());
+            System.out.println("â¤ï¸ VarÃ¡zslÃ³ Ã©leterÅ‘: " + varazslo.getEletero());
 
-            System.out.println("\nHarcos mezõ: " + harcos.getLepes());
-            System.out.println("Varázsló mezõ: " + varazslo.getLepes());
+            System.out.println("\nâš”ï¸ Harcos mezÅ‘: " + harcos.getLepes());
+            System.out.println("âœ¨ VarÃ¡zslÃ³ mezÅ‘: " + varazslo.getLepes());
 
             for (int i = 0; i < 3; i++) {
                 if (harcos.getLepes() == i && varazslo.getLepes() == i) {
-                    System.out.print("[X] ");
+                    System.out.print("[ğŸ”¥] ");
                 } else if (harcos.getLepes() == i) {
-                    System.out.print("[H] ");
+                    System.out.print("[âš”ï¸] ");
                 } else if (varazslo.getLepes() == i) {
-                    System.out.print("[V] ");
+                    System.out.print("[âœ¨] ");
                 } else {
                     System.out.print("[ ] ");
                 }
@@ -50,28 +51,31 @@ public class Program {
             System.out.println("");
 
             if (harcos.getLepes() == varazslo.getLepes()) {
-                System.out.println("---------------");
-                System.out.println("HARC!");
-                System.out.println("---------------");
-
+                
+                System.out.println("\n*********");
+                System.out.println("ğŸ”¥ HARC ğŸ”¥");
+                System.out.println("*********\n");
+                
                 varazslo.harcol(harcos);
                 harcos.harcol(varazslo);
-                System.out.println("A varázsló ütõ ereje: " + varazslo.getUtoero());
-                System.out.println("A varázsló gyógyítja magát, plusz 1 élet");
-                System.out.println("A harcos ütõ ereje: " + harcos.getUtoero());
+                
+                System.out.println("âœ¨ A varÃ¡zslÃ³ Ã¼tÅ‘ ereje: " + varazslo.getUtoero());
+                System.out.println("âš”ï¸ A harcos Ã¼tÅ‘ ereje: " + harcos.getUtoero());
 
                 if (varazslo.getEletero() > 0) {
                     varazslo.gyogyit();
+                    System.out.println("â¤ï¸ A varÃ¡zslÃ³ gyÃ³gyÃ­tja magÃ¡t, plusz 1 Ã©let");
                 }
             }
 
             if (harcos.extraElet()) {
                 System.out.println("---------------");
-                System.out.println("A harcos 1 extra életet kapott!");
+                System.out.println("â¤ï¸ A harcos 1 extra Ã©letet kapott!");
             }
+            
             if (varazslo.extraElet()) {
                 System.out.println("---------------");
-                System.out.println("A varázsló 1 extra életet kapott!");
+                System.out.println("â¤ï¸ A varÃ¡zslÃ³ 1 extra Ã©letet kapott!");
             }
 
             harcos.ujLepes();
@@ -80,29 +84,29 @@ public class Program {
         }
 
         System.out.println("---------------");
-        System.out.println("Harcos életerõ: " + harcos.getEletero());
-        System.out.println("Varázsló életerõ: " + varazslo.getEletero());
+        System.out.println("â¤ï¸ Harcos Ã©leterÅ‘: " + harcos.getEletero());
+        System.out.println("â¤ï¸ VarÃ¡zslÃ³ Ã©leterÅ‘: " + varazslo.getEletero());
 
         System.out.println("---------------");
-        System.out.println("Játék vége");
-        System.out.println("\nLejátszott körök száma: " + korokSzama);
+        System.out.println("ğŸ JÃ¡tÃ©k vÃ©ge ğŸ");
+        System.out.println("\nğŸ® LejÃ¡tszott kÃ¶rÃ¶k szÃ¡ma: " + korokSzama);
 
         String gyoztes;
         if (harcos.getEletero() == 0 && varazslo.getEletero() == 0) {
-            System.out.println("Döntetlen!");
+            System.out.println("âš–ï¸ DÃ¶ntetlen!");
             gyoztes = "dontetlen";
         } else if (varazslo.getEletero() == 0) {
-            System.out.println("A harcos gyõzött!");
+            System.out.println("âš”ï¸ A harcos gyÅ‘zÃ¶tt!");
             gyoztes = "harcos";
         } else {
-            System.out.println("A varázsló gyõzõtt!");
+            System.out.println("âœ¨ A varÃ¡zslÃ³ gyÅ‘zÅ‘tt!");
             gyoztes = "varazslo";
         }
 
         if (gyoztes.equals(tipp)) {
-            System.out.println("Gratulálok, jól tippeltél!");
+            System.out.println("ğŸ† GratulÃ¡lok, jÃ³l tippeltÃ©l!");
         } else {
-            System.out.println("Sajnos nem talált a tipped!");
+            System.out.println("ğŸ˜¢ Sajnos nem talÃ¡lt a tipped!");
         }
     }
 
